@@ -1,0 +1,14 @@
+def helper(root,l,r):
+        if len(root.branches)> 2:
+            return False
+        else:
+            if l < root.label <= r:
+                if root.is_leaf():
+                    return True
+                elif len(root.branches) == 1:
+                    return helper(root.branches[0],root.label,r) or helper(root.branches[0],l,root.label) 
+                else:
+                   return helper(root.branches[0],l,root.label) and helper(root.branches[1],root.label,r)        
+            else:
+                return False    
+    return helper(t,-float('inf'),float('inf'))              
